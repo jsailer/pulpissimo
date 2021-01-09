@@ -19,9 +19,10 @@
 #
 
 pulp_soc:
-  commit: v2.0.0
+#  commit: v2.0.0
+  commit: dift-ext
   server: https://github.com
-  group:  pulp-platform
+  group:  jsailer
 
 tbtools:
   commit: v0.1
