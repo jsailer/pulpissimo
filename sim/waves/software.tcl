@@ -1,5 +1,6 @@
 # add fc execution trace
 set rvcores [find instances -recursive -bydu riscv_core -nodu]
+set l2ram [find instances -recursive -bydu l2_ram_multi_bank -nodu]
 set fpuprivate [find instances -recursive -bydu fpu_private]
 
 if {$rvcores ne ""} {
@@ -14,6 +15,10 @@ if {$rvcores ne ""} {
     add wave -group "Software Debugging" $rvcores/pc_if
     add wave -group "Software Debugging" -divider "Register File contents"
     add wave -group "Software Debugging" $rvcores/id_stage_i/registers_i/riscv_register_file_i/mem
+    add wave -group "Software Debugging" $rvcores/id_stage_i/registers_i/riscv_register_file_i/mem_tag
+    add wave -group "Software Debugging" -divider "L2 RAM pri0 contents"
+    add wave -group "Software Debugging" $l2ram/bank_sram_pri0_i/MEM
+    add wave -group "Software Debugging" $l2ram/bank_sram_pri0_i/MEMTAG
     if {$fpuprivate ne ""} {
 	add wave -group "Software Debugging" $rvcores/id_stage_i/registers_i/riscv_register_file_i/mem_fp
     }
